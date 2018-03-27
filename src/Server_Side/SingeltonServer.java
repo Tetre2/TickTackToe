@@ -18,7 +18,7 @@ public class SingeltonServer {
 	ServerSocket server;
 	int PORT = 444;
 
-	public static int playersReady = 0;
+	public volatile static int playersReady = 0;
 
 	private static boolean flipFlop = true;
 	private static boolean oneTimeOnly = true;
@@ -40,10 +40,11 @@ public class SingeltonServer {
 		try {
 			server = new ServerSocket(PORT);
 
+			System.out.println();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		Runnable connection_listener = () -> {
 			while (!(clients.size() == 2)) {
 				try {
@@ -59,7 +60,6 @@ public class SingeltonServer {
 			}
 
 			while (true) {
-				System.out.println(playersReady);
 				if(playersReady == 2){
 					StartGame();
 					break;
