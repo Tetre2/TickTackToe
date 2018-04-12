@@ -57,7 +57,7 @@ public class ConnectingClient extends Application{
 
 		try {
 
-			connection = new Socket("192.168.29.56", 444);
+			connection = new Socket("192.168.28.175", 444);
 			from_server = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			to_server = new PrintStream(connection.getOutputStream());
 
