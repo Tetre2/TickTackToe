@@ -39,12 +39,12 @@ public class SingeltonServer {
 
 		try {
 			server = new ServerSocket(PORT);
-
-			System.out.println();
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		
 		Runnable connection_listener = () -> {
 			while (!(clients.size() == 2)) {
 				try {
